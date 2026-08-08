@@ -3,6 +3,7 @@ from collections import Counter
 print("Text Analysis Toolkit")
 file_path =input("Enter the path of the text file:")
 
+
 def read_lines(file_path):
     with open(file_path,"r")as file:
         for line in file:
@@ -15,6 +16,9 @@ line_count=0
 sentence_count=0
 
 words =[]
+
+stopwords = {"the","a","an","is","and","to","of","in"}
+
 
 for line in read_lines(file_path):
     line=line.rstrip("\n")
@@ -37,9 +41,17 @@ for line in read_lines(file_path):
 
 word_counter =Counter(words)
 
+filtered_words= filter(lambda word: word not in stopwords,words)
+filtered_counter= Counter(filtered_words)
+
 
 print("Word count:",word_count)
 print("Character count:",character_count)
 print("Character count without spaces:",character_count_no_spaces)
 print("Line count:",line_count)
 print("sentence count:",sentence_count)
+
+print("\nTop 10 most commomn words:")
+
+for word,count in filtered_counter.most_common(10):
+    print(word,":",count)
