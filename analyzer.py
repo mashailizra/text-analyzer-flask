@@ -1,6 +1,32 @@
 from collections import Counter
 
-print("Text Analysis Toolkit")
+
+class UnsupportedFileTypeError(Exception):
+    pass
+class EmptyFileError(Exception):
+    pass
+
+class TextAnalyzer:
+    def __init__(self, file_path):
+        if not file_path.endswith(".txt"):
+            raise UnsupportedFileTypeError("Only .txt files are supported.")
+
+        with open(file_path, "r") as file:
+            if file.read().strip() == "":
+                raise EmptyFileError("The file is empty.")
+
+        self.file_path = file_path
+
+    def read_lines(self):
+        with open(self.file_path, "r") as file:
+            for line in file:
+                yield line
+
+analyzer = TextAnalyzer("sample.txt")
+for line in analyzer.read_lines():
+    print(line, end="")
+
+print("\nText Analysis Toolkit")
 file_path =input("Enter the path of the text file:")
 
 
