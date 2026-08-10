@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Analysis Results</title>
+</head>
+<body>
+
+    <h1>Text Analysis Results</h1>
+
+    <table border="1">
+        <tr>
+            <th>Statistic</th>
+            <th>Value</th>
+        </tr>
+
+        <tr>
+            <td>Word Count</td>
+            <td>{{ word_count }}</td>
+        </tr>
+
+        <tr>
+            <td>Character Count</td>
+            <td>{{ char_count }}</td>
+        </tr>
+
+        <tr>
+            <td>Sentence Count</td>
+            <td>{{ sentence_count }}</td>
+        </tr>
+
+        <tr>
+            <td>Top Words</td>
+            <td>
+                {% for word, count in top_words %}
+                    {{ word }}: {{ count }}<br>
+                {% endfor %}
+            </td>
+        </tr>
+
+    </table>
+
+</body>
+</html>
