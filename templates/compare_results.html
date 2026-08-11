@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Comparison Results</title>
+</head>
+<body>
+<nav>
+    <a href="/">Analyze File</a> |
+    <a href="/compare">Compare Files</a>
+</nav>
+
+<br>
+    <h1>Comparison Results</h1>
+
+    <table border="1">
+        <tr>
+            <th>Statistic</th>
+            <th>Value</th>
+        </tr>
+
+        <tr>
+            <td>File 1 Word Count</td>
+            <td>{{ word_count1 }}</td>
+        </tr>
+
+        <tr>
+            <td>File 2 Word Count</td>
+            <td>{{ word_count2 }}</td>
+        </tr>
+
+        <tr>
+            <td>Similarity</td>
+            <td>{{ similarity }}%</td>
+        </tr>
+    </table>
+
+    <h2>Shared Words</h2>
+
+    <ul>
+        {% for word in common_words %}
+            <li>{{ word }}</li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>

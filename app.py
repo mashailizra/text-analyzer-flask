@@ -38,3 +38,50 @@ def analyze():
             "index.html",
             error="Error: The file is empty."
         )
+
+@app.route("/compare", methods=["GET", "POST"])
+def compare():
+    if request.method == "POST":
+        file1 = request.files["file1"]
+        file2 = request.files["file2"]
+
+        try:
+            analyzer1 = TextAnalyzer(
+                file1.filename,
+                file1.stream
+            )
+
+            analyzer2 = TextAnalyzer(
+                file2.filename,
+                file2.stream
+            )
+
+            words1 = analyzer1.word_set
+            words2 = analyzer2.word_set
+
+            common_words = words1 & words2
+            union_words = words1 | words2
+
+            similarity = (len(common_words) / len(union_words)) * 100
+
+            return render_template(
+                "compare_results.html",
+                word_count1=analyzer1.word_count,
+                word_count2=analyzer2.word_count,
+                similarity=f"{similarity:.2f}",
+                common_words=sorted(common_words)
+            )
+
+        except UnsupportedFileTypeError:
+            return render_template(
+                "compare.html",
+                error="Error: Only .txt files are supported."
+            )
+
+        except EmptyFileError:
+            return render_template(
+                "compare.html",
+                error="Error: One or both files are empty."
+            )
+
+    return render_template("compare.html")

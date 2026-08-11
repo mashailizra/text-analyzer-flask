@@ -72,10 +72,8 @@ class TextAnalyzer:
 
         return count
 
-    def top_words(self, n=10):
+    def _get_words(self):
         words = []
-
-        stopwords = {"the", "a", "an", "is", "and", "to", "of", "in"}
 
         for line in self.read_lines():
             line = line.lower()
@@ -84,6 +82,19 @@ class TextAnalyzer:
             line = line.replace("?", "")
 
             words.extend(line.split())
+
+        return words
+
+    @property
+    def word_set(self):
+        return set(self._get_words())
+
+    
+
+    def top_words(self, n=10):
+        stopwords = {"the", "a", "an", "is", "and", "to", "of", "in"}
+
+        words= self._get_words()
 
         filtered_words = filter(lambda word: word not in stopwords, words)
         word_counter = Counter(filtered_words)
@@ -98,6 +109,7 @@ print("Word count:", analyzer.word_count)
 print("Character count:", analyzer.char_count)
 print("Sentence count:", analyzer.sentence_count)
 print("Top words:", analyzer.top_words())
+
 
 
 
