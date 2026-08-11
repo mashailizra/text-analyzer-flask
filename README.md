@@ -12,4 +12,4 @@ Python 3, Flask
 - [x] Custom EmptyFileError / UnsupportedFileTypeError.
 - [x] Flask web app: upload a .txt file, view stats in the browser.
 - [x] Compare two documents with Jaccard similarity 
-(set intersection/union)
+(set intersection/union).
