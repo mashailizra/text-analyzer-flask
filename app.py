@@ -1,7 +1,9 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request,flash
 from analyzer import TextAnalyzer, EmptyFileError, UnsupportedFileTypeError
 
 app = Flask(__name__)
+
+app.secret_key="text-analysis-toolkit-secret"
 
 
 @app.route("/")
@@ -28,17 +30,13 @@ def analyze():
         )
 
     except UnsupportedFileTypeError:
-        return render_template(
-            "index.html",
-            error="Error: Only .txt files are supported."
-        )
+        flash("Error: Only .txt files are supported.")
+        return render_template("index.html")
 
     except EmptyFileError:
-        return render_template(
-            "index.html",
-            error="Error: The file is empty."
-        )
-
+        flash("Error: The file is empty.")
+        return render_template("index.html")
+    
 @app.route("/compare", methods=["GET", "POST"])
 def compare():
     if request.method == "POST":
@@ -73,15 +71,11 @@ def compare():
             )
 
         except UnsupportedFileTypeError:
-            return render_template(
-                "compare.html",
-                error="Error: Only .txt files are supported."
-            )
+            flash("Error: Only .txt files are supported.")
+            return render_template("compare.html")
 
         except EmptyFileError:
-            return render_template(
-                "compare.html",
-                error="Error: One or both files are empty."
-            )
+            flash("Error: One or both files are empty.")
+            return render_template("compare.html")
 
     return render_template("compare.html")

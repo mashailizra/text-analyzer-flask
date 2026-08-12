@@ -2,17 +2,22 @@
 <html>
 <head>
     <title>Comparison Results</title>
-</head>
-<body>
-<nav>
-    <a href="/">Analyze File</a> |
-    <a href="/compare">Compare Files</a>
-</nav>
 
-<br>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <nav>
+        <a href="/">Analyze File</a> |
+        <a href="/compare">Compare Files</a>
+    </nav>
+
+    <br>
+
     <h1>Comparison Results</h1>
 
-    <table border="1">
+    <table>
         <tr>
             <th>Statistic</th>
             <th>Value</th>

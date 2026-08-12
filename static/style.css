@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+    line-height: 1.6;
+}
+
+nav {
+    margin-bottom: 25px;
+}
+
+nav a {
+    margin-right: 15px;
+    text-decoration: none;
+}
+
+h1 {
+    margin-bottom: 10px;
+}
+
+form {
+    margin-top: 20px;
+}
+
+button {
+    padding: 8px 15px;
+    cursor: pointer;
+}
+
+table {
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th,
+td {
+    padding: 8px 12px;
+    border: 1px solid #999;
+}
+
+.error {
+    margin: 15px 0;
+    padding: 10px;
+    border: 1px solid #999;
+}

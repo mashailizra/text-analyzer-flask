@@ -2,21 +2,30 @@
 <html>
 <head>
     <title>Compare Text Files</title>
-</head>
-<body>
-<nav>
-    <a href="/">Analyze File</a> |
-    <a href="/compare">Compare Files</a>
-</nav>
 
-<br>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p class="error">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <nav>
+        <a href="/">Analyze File</a> |
+        <a href="/compare">Compare Files</a>
+    </nav>
+
+    <br>
+
     <h1>Compare Text Files</h1>
 
-{% if error %}
-    <p>{{ error }}</p>
-{% endif %}
-
-<p>Select two text files to compare.</p>
+    <p>Select two text files to compare.</p>
 
     <form action="/compare" method="POST" enctype="multipart/form-data">
 
