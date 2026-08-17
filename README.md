@@ -4,7 +4,7 @@ character/sentence
 counts, top words, and a Jaccard-similarity comparison between 
 two documents.
 ## Status
-Complete
+Completed.
 ## Features
 - Upload a `.txt` file and view word, character, and sentence counts plus the top 10 words
 - Compare two `.txt` documents for word overlap using Jaccard similarity.
@@ -29,7 +29,8 @@ Python 3, Flask, HTML/CSS,Jinja templates
 
 ## How to Run
 
-### 1. Clone the repository
+###
+ 1. Clone the repository
 
 ```bash
 git clone <your-github-repository-url>
@@ -48,4 +49,5 @@ pip install -r requirements.txt
 flask --app app run
 ```
 Then open http://127.0.0.1:5000 in your browser.
-## What I learned- How a web request/response cycle works (routes, GET vs POST)- Reading uploaded files without saving them to disk- Rendering dynamic HTML with Jinja templates- Using sets for a real analytical task (similarity scoring
+## What I learned- 
+How a web request/response cycle works (routes, GET vs POST)- Reading uploaded files without saving them to disk- Rendering dynamic HTML with Jinja templates- Using sets for a real analytical task (similarity scoring).
